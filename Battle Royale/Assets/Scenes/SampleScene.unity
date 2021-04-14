@@ -255,7 +255,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.2716714, g: 0.40335608, b: 0.5188679, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4244efdb4f12f141b321b33e026c0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angle: 0
 --- !u!1 &876734031
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f803edd04d4f3b645bc009576ee91f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
 --- !u!4 &876734033
 Transform:
   m_ObjectHideFlags: 0
@@ -591,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4244efdb4f12f141b321b33e026c0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angle: 0
 --- !u!1 &1758808365
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +607,7 @@ GameObject:
   - component: {fileID: 1758808370}
   - component: {fileID: 1758808369}
   - component: {fileID: 1758808371}
+  - component: {fileID: 1758808372}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -729,3 +732,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4244efdb4f12f141b321b33e026c0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angle: 0
+--- !u!114 &1758808372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758808365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92835e39f7250c499db2f10eb113649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 164696961423504010, guid: 9eeecd930389e6d4190f6529164e6a88, type: 3}

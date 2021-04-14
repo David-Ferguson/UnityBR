@@ -5,6 +5,7 @@ using UnityEngine;
 public class Players : MonoBehaviour
 {
     int health = 100;
+    public float angle = 0f;
     // Start is called before the first frame update
     void Start()
     {

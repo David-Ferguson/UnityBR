@@ -13,14 +13,14 @@ public class EnemyAI : MonoBehaviour
     }
     private System.Random rand = new System.Random();
     // Update is called once per frame
-    private float angle = 0f;
- 
+    private float moveAngle = 0f;
+
     void Update()
     {
-        int action = rand.Next(200);
+        int action = GameObject.Find("Players").GetComponent<Spawner>().rand.Next(200);
         if (action == 1) {
-            angle = Convert.ToSingle(rand.NextDouble()) * 360f;
+            moveAngle = Convert.ToSingle(GameObject.Find("Players").GetComponent<Spawner>().rand.NextDouble()) * 360f;
         }
-        transform.position += new Vector3(speed * Convert.ToSingle(Math.Cos(angle)), speed * Convert.ToSingle(Math.Sin(angle)), 0.0f) * Time.deltaTime;
+        transform.position += new Vector3(speed * Convert.ToSingle(Math.Cos(moveAngle)), speed * Convert.ToSingle(Math.Sin(moveAngle)), 0.0f) * Time.deltaTime;
     }
 }

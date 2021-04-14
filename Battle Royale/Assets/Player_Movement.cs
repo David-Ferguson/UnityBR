@@ -10,12 +10,19 @@ public class Player_Movement : MonoBehaviour
     void Start()
     {
         speed = GameObject.Find("Players").GetComponent<Spawner>().speed;
+        Vector2 mousePos = Input.mousePosition;
     }
 
     // Update is called once per frame
  
     void Update()
     {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mouseDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y).normalized;
+        this.gameObject.GetComponent<Players>().angle = Mathf.Acos(mouseDirection.x);
+        if (mousePos.y - transform.position.y < 0) {
+            this.gameObject.GetComponent<Players>().angle = this.gameObject.GetComponent<Players>().angle + (Mathf.PI - this.gameObject.GetComponent<Players>().angle) * 2;
+        }
         Vector3 pos = transform.position;
 
         if (Input.GetKey("w"))

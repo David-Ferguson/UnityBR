@@ -13,7 +13,7 @@ public class Circle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float oneSecondChange = transform.localScale.x * .9975f;
+        float oneSecondChange = transform.localScale.x * .99f;
         float deltaScale = (transform.localScale.x - oneSecondChange) * Time.deltaTime + 0.005f * Time.deltaTime;
         transform.localScale = new Vector3 (transform.localScale.x - deltaScale, transform.localScale.y - deltaScale, transform.localScale.z);
         

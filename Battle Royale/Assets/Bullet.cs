@@ -12,12 +12,24 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
     public float angle = 0.0f;
     public float timeToLive = 1.0f;
+    public GameObject shooter = null;
     void Start()
     {
         Destroy(gameObject, 1);
         angle = angle + Convert.ToSingle(GameObject.Find("Players").GetComponent<Spawner>().rand.NextDouble()) / 2 - 0.25f;
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet" && transform.position.x < 500)
+        {
+            Destroy(gameObject);
+        } else if (collision.gameObject != shooter)
+        {
+            shooter.GetComponent<Players>().health = shooter.GetComponent<Players>().health + 10;
+            Destroy(gameObject);
+        }
 
+    }
     // Update is called once per frame
     void Update()
     {

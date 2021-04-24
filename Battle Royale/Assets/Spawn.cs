@@ -4,7 +4,7 @@ using System;
 
 public class Spawn : MonoBehaviour
 {
-    public float spawnRadius = 20f;
+    public float spawnRadius = 150f;
     
     // Start is called before the first frame update
     void Start()

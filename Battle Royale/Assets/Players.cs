@@ -6,6 +6,7 @@ public class Players : MonoBehaviour
 {
     public int health = 100;
     public float angle = 0f;
+    float circleTickCooldown = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,17 +30,27 @@ public class Players : MonoBehaviour
         if (health <= 0)
         {
             transform.position = new Vector3(1000, 0, 0);
-            if (health == 0)
-            {
-                GameObject.Find("Players").GetComponent<Spawner>().playersLeft = GameObject.Find("Players").GetComponent<Spawner>().playersLeft - 1;
-                Debug.Log(GameObject.Find("Players").GetComponent<Spawner>().playersLeft);
-            }
-            health = -10;
+            GameObject.Find("Players").GetComponent<Spawner>().playersLeft = GameObject.Find("Players").GetComponent<Spawner>().playersLeft - 1;
+            Debug.Log(GameObject.Find("Players").GetComponent<Spawner>().playersLeft);
+            health = 1000;
         }
-        if (health > 100)
+        if (Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.y * transform.position.y) >= GameObject.Find("Circle").transform.localScale.x * 25 && circleTickCooldown <= 0)
+        {
+            health = health - 1;
+            circleTickCooldown = 0.1f;
+        } else if (Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.y * transform.position.y) >= GameObject.Find("Circle").transform.localScale.x * 25) {
+            circleTickCooldown -= Time.deltaTime;
+        } else
+        {
+            circleTickCooldown = 0.2f;
+        }
+        if (health > 100 && health < 500)
         {
             health = 100;
         }
-
+        if (health > 500) {
+            transform.position = new Vector3(1000, 0, 0);
+            health = 1000;
+        }
     }
 }

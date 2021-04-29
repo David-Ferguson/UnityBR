@@ -76,6 +76,14 @@ public class EnemyAI : MonoBehaviour
                 moveAngle = moveAngle - Mathf.PI / 2;
             }
         }
+        if (Mathf.Sqrt(transform.position.x*transform.position.x+transform.position.y*transform.position.y) >= GameObject.Find("Circle").transform.localScale.x * 25 && GameObject.Find("Circle").transform.localScale.x * 25 > 5) {
+            targetDirection = new Vector2(-transform.position.x, -transform.position.y).normalized;
+            moveAngle = Mathf.Acos(targetDirection.x);
+            if (transform.position.y > 0)
+            {
+                moveAngle = moveAngle + (Mathf.PI - moveAngle) * 2;
+            }
+        }
         transform.position += new Vector3(speed * Convert.ToSingle(Math.Cos(moveAngle)), speed * Convert.ToSingle(Math.Sin(moveAngle)), 0.0f) * Time.deltaTime;
     }
 }

@@ -30,7 +30,13 @@ public class EnemyShoot : MonoBehaviour
                 angle = Convert.ToSingle(GameObject.Find("Players").GetComponent<Spawner>().rand.NextDouble()) * 360;
             }
             bullet.GetComponent<Bullet>().angle = angle;
-            shotCooldown = 0.1f;
+            if (transform.position.x < 500)
+            {
+                shotCooldown = 0.1f;
+            } else
+            {
+                shotCooldown = 1;
+            }
             bullet.GetComponent<SpriteRenderer>().color = this.gameObject.GetComponent<Renderer>().material.color;
             bullet.GetComponent<Bullet>().shooter = this.gameObject;
             bullet.tag = "Bullet";

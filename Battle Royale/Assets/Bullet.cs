@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     //object parent = transform.parent.gameObject;
     //object doubleParent = transform.parent.parent.gameObject;
     //float angle = parent.angle + doubleParent.rand.NextDouble(10) - 5;
-    public float speed = 10f;
+    public float speed = 15f;
     public float angle = 0.0f;
     public float timeToLive = 1.0f;
     public GameObject shooter = null;
@@ -22,8 +22,11 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet" && transform.position.x < 500)
         {
-            Destroy(gameObject);
-        } else if (collision.gameObject != shooter)
+            if (shooter != collision.gameObject.GetComponent<Bullet>().shooter && transform.position.x < 500)
+            {
+                Destroy(gameObject);
+            }
+        } else if (collision.gameObject != shooter && transform.position.x < 500)
         {
             shooter.GetComponent<Players>().health = shooter.GetComponent<Players>().health + 10;
             Destroy(gameObject);

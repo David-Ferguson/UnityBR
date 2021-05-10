@@ -22,10 +22,12 @@ public class Shoot : MonoBehaviour
             {
                 var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
                 bullet.GetComponent<Bullet>().angle = this.gameObject.GetComponent<Players>().angle;
-                shotCooldown = 0.1f;
+                shotCooldown = 1f / this.GetComponent<Players>().bulletsPerSecond[this.GetComponent<Players>().powers[2]];
                 bullet.GetComponent<SpriteRenderer>().color = this.gameObject.GetComponent<Renderer>().material.color;
                 bullet.GetComponent<Bullet>().shooter = this.gameObject;
                 bullet.tag = "Bullet";
+                bullet.GetComponent<Bullet>().health = this.GetComponent<Players>().bulletHealth[this.GetComponent<Players>().powers[1]];
+                bullet.GetComponent<Bullet>().timeToLive = this.GetComponent<Players>().bulletTimeToLive[this.GetComponent<Players>().powers[3]];
             }
         }
     }

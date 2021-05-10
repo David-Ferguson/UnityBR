@@ -16,39 +16,37 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        playersLeft = GetEnemies().Length-1;
+        playersLeft = GetEnemies().Length-303; //303 accounts for grandchildren of Players
         children = GetEnemies();
-        int[] bonusDist = new int[] { 0, 2, 22, 42, 62, 82, 92 };
+        int[] bonusDist = new int[] { 0, 2, 22, 42, 62, 82 };
         int[] bonuses = new int[] { 0, 0, 0, 0, 0, 0 };
-        for (int i = 0; i <= 101; i++)
+        int i = 0;
+        foreach (Transform child in transform)
         {
-            if (i >= bonusDist[6])
+            i += 1;
+            if (i >= bonusDist[5])
             {
-                children[i].gameObject.GetComponent<Players>().powers[5]++;
-                bonuses[5]++;
-            } else if (i >= bonusDist[5])
-            {
-                children[i].gameObject.GetComponent<Players>().powers[4]++;
+                child.gameObject.GetComponent<Players>().powers[4]++;
                 bonuses[4]++;
             }
             else if (i >= bonusDist[4])
             {
-                children[i].gameObject.GetComponent<Players>().powers[3]++;
+                child.gameObject.GetComponent<Players>().powers[3]++;
                 bonuses[3]++;
             }
             else if (i >= bonusDist[3])
             {
-                children[i].gameObject.GetComponent<Players>().powers[2]++;
+                child.gameObject.GetComponent<Players>().powers[2]++;
                 bonuses[2]++;
             }
             else if (i >= bonusDist[2])
             {
-                children[i].gameObject.GetComponent<Players>().powers[1]++;
+                child.gameObject.GetComponent<Players>().powers[1]++;
                 bonuses[1]++;
             }
             else if (i >= bonusDist[1])
             {
-                children[i].gameObject.GetComponent<Players>().powers[0]++;
+                child.gameObject.GetComponent<Players>().powers[0]++;
                 bonuses[0]++;
             } else
             {

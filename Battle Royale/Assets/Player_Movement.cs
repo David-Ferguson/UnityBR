@@ -32,13 +32,9 @@ public class Player_Movement : MonoBehaviour
         {
             bonus = 3;
         }
-        else if (bonus == 8)
+        else if (bonus == 8 || bonus == 9)
         {
             bonus = 4;
-        }
-        else if (bonus == 9)
-        {
-            bonus = 5;
         }
         this.gameObject.GetComponent<Players>().powers[bonus] = this.gameObject.GetComponent<Players>().powers[bonus] + 1;
         Debug.Log("Bonus");
@@ -114,14 +110,5 @@ public class Player_Movement : MonoBehaviour
             pos = transform.position - new Vector3(posChangex, posChangey, 0f);
         }
         transform.position = pos;
-        /*Debug.Log(this.gameObject.GetComponent<Players>().powers[0]);
-        Debug.Log(this.gameObject.GetComponent<Players>().powers[1]); 
-        Debug.Log(this.gameObject.GetComponent<Players>().powers[2]);
-        Debug.Log(this.gameObject.GetComponent<Players>().powers[3]); 
-        Debug.Log(this.gameObject.GetComponent<Players>().powers[4]);
-        Debug.Log(this.gameObject.GetComponent<Players>().powers[5]);*/
-        Debug.Log(this.gameObject.GetComponent<Players>().health);
-        Debug.Log(this.gameObject.GetComponent<Players>().powers[5]);
-        Debug.Log(this.gameObject.GetComponent<Players>().regenCooldown);
     }
 }

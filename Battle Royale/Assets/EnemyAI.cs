@@ -24,12 +24,15 @@ public class EnemyAI : MonoBehaviour
         Vector3 currentPosition = transform.position;
         foreach (Transform potentialTarget in enemies)
         {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr && dSqrToTarget >= 0.01)
+            if (potentialTarget.tag != "Health" && potentialTarget.tag != "Advantage")
             {
+                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr && dSqrToTarget >= 0.01)
+                {
                     closestDistanceSqr = dSqrToTarget;
                     bestTarget = potentialTarget;
+                }
             }
         }
 
@@ -76,7 +79,7 @@ public class EnemyAI : MonoBehaviour
                 moveAngle = moveAngle - Mathf.PI / 2;
             }
         }
-        if (Mathf.Sqrt(transform.position.x*transform.position.x+transform.position.y*transform.position.y) >= GameObject.Find("Circle").transform.localScale.x * 25 && GameObject.Find("Circle").transform.localScale.x * 25 > 2) {
+        if (Mathf.Sqrt(transform.position.x*transform.position.x+transform.position.y*transform.position.y) >= GameObject.Find("Circle").transform.localScale.x * 25 - 0.1 && GameObject.Find("Circle").transform.localScale.x * 25 > 2) {
             targetDirection = new Vector2(-transform.position.x, -transform.position.y).normalized;
             moveAngle = Mathf.Acos(targetDirection.x);
             if (transform.position.y > 0)
